@@ -129,7 +129,7 @@ public:
         }
     }
 
-    void scanAscending(RecordListResponse& _return, std::map<std::string, std::string>& map,
+    void scanAscending(RecordListResponse& _return, const string& map,
               const std::string& startKey, const bool startKeyIncluded, 
               const std::string& endKey, const bool endKeyIncluded,
               const int32_t maxRecords, const int32_t maxBytes) {
@@ -143,7 +143,7 @@ public:
         Iterator* iter = itr->second->NewIterator(ReadOptions());
         DBImpl* dbimpl = dynamic_cast<DBImpl*>(itr->second);
         Comparator* cmp = dbimpl->user_comparator();
-        
+
         iter->Seek(startKey);
         if (!startKeyIncluded && cmp->Compare(startKey, iter->value()) == 0)
             iter->Next();
@@ -163,7 +163,7 @@ public:
         _return.responseCode = ResponseCode::ScanEnded;
     }
 
-    void scanDescending(RecordListResponse& _return, std::map<std::string, std::string>& map,
+    void scanDescending(RecordListResponse& _return, const string& map,
               const std::string& startKey, const bool startKeyIncluded, 
               const std::string& endKey, const bool endKeyIncluded,
               const int32_t maxRecords, const int32_t maxBytes) {
