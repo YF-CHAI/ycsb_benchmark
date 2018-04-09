@@ -15,6 +15,7 @@
 #include <dirent.h>
 #include <errno.h>
 #include <arpa/inet.h>
+#include <cstdint>
 
 #include <protocol/TBinaryProtocol.h>
 #include <server/TThreadedServer.h>
